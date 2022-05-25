@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState , useEffect } from "react";
 import { useAuth, upload } from "../firebase/index"
-
 import { useUserContext } from "../context/userContext";
 
 const Dashboard = () => {
@@ -30,18 +29,19 @@ const Dashboard = () => {
   const { user, logoutUser } = useUserContext();
   console.log(user);
   return (
+    <>
     <div>
-      <h1>Dashboard </h1>
+    <h1 >Dashboard </h1>
       <div className="fields">
+      <img src={photoURL} alt="Avatar" className="avatar" />
       <input type="file" onChange={handleChange} />
       <button disabled={loading || !photo} onClick={handleClick}>Upload</button>
-      <img src={photoURL} alt="Avatar" className="avatar" />
-    </div>
+      </div>
       <h2>Name : {user.displayName}</h2>
       <h2>Email : {user.email}</h2>
-
       <button onClick={logoutUser}>Log out</button>
     </div>
+    </>
   );
 };
 

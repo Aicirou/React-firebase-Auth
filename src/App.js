@@ -1,28 +1,14 @@
-import React from 'react';
-import Signin from './components/Signin';
-import Signup from './components/Signup';
-import Account from './components/Account';
-import { Route, Routes } from 'react-router-dom';
-import { AuthContextProvider } from './context/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute';
+import Auth from "./components/auth";
+import Dashboard from "./components/dashboard";
+import { useUserContext } from "./context/userContext";
 
 function App() {
+  const { user, loading, error } = useUserContext();
+
   return (
-    <div>
-      <AuthContextProvider>
-        <Routes>
-          <Route path='/' element={<Signin />} />
-          <Route path='/signup' element={<Signup />} />
-          <Route
-            path='/account'
-            element={
-              <ProtectedRoute>
-                <Account />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </AuthContextProvider>
+    <div className="App">
+      {error && <p className="error">{error}</p>}
+      {loading ? <h2>Loading...</h2> : <> {user ? <Dashboard /> : <Auth />} </>}
     </div>
   );
 }

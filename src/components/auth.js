@@ -17,7 +17,7 @@ const Auth = () => {
       <button onClick={signInWithGoogle}> Continue with Google </button>
       <button onClick={signInWithGithub}> Continue with GitHub </button>
       <p onClick={toggleIndex}>
-        {!index ? "New user? Click here " : "Already have an acount?"}
+        {!index ? "New user? Signup " : "Already have an acount? Signin"}
       </p>
     </div>
   );

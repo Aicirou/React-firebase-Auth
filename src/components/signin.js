@@ -16,7 +16,8 @@ const Signin = () => {
   const forgotPasswordHandler = () => {
     const email = emailRef.current.value;
     if (email)
-      forgotPassword(email).then(() => {
+      forgotPassword(email)
+      .then(() => {
         emailRef.current.value = "";
       });
   };
@@ -28,7 +29,7 @@ const Signin = () => {
         <input placeholder="Email" type="email" ref={emailRef} />
         <input placeholder="Password" type="password" ref={psdRef} />
         <button type="submit">Sign In</button>
-        <p onClick={forgotPasswordHandler}>Forgot Password?</p>
+        <p  onClick={forgotPasswordHandler}>Forgot Password?</p>
       </form>
     </div>
   );
